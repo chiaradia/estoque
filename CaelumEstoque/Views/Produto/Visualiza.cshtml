@@ -1,29 +1,25 @@
 ﻿
+<h2>Detalhes do @ViewBag.Produto.Nome</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item">Id do produto: @ViewBag.Produto.Id</li>
+
+        <li class="list-group-item">Quantidade: @ViewBag.Produto.Quantidade</li>
+
+        <li class="list-group-item">Preço: @ViewBag.Produto.Preco</li>
+
+        <li class="list-group-item">Descricao: @ViewBag.Produto.Descricao</li>
+
+        <li class="list-group-item">Categoria: @ViewBag.Produto.Categoria.Nome</li>
+    </ul>
+
+<ul class="nav nav-pills pull-left">
+    <li>@Html.ActionLink("Voltar", "Index", "Produto")</li>
+</ul>
+
 @{
-    Layout = null;
+    //podemos utilizar o método RouteLink do HtmlHelper passando o texto do link e o nome da rota para montar o link.
+    //Html.ActionLink("Voltar", "Index", "Produto")
+    //@Html.RouteLink("Voltar", "ListarProdutos")
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Visualiza</title>
-</head>
-<body>
-    <h2>Detalhes</h2>
-    <div>
-        Id: @ViewBag.Produto.Id<br />
-        Nome: @ViewBag.Produto.Nome<br />
-        Quantidade: @ViewBag.Produto.Quantidade<br />
-        Preço: @ViewBag.Produto.Preco<br />
-        Descricao: @ViewBag.Produto.Descricao<br />
-        Categoria: @ViewBag.Produto.Categoria.Nome<br />
-    </div>
-    @Html.RouteLink("Voltar", "ListarProdutos")
-    @{
-        //podemos utilizar o método RouteLink do HtmlHelper passando o texto do link e o nome da rota para montar o link.
-        //Html.ActionLink("Voltar", "Index", "Produto")
-     }
-</body>
-</html>

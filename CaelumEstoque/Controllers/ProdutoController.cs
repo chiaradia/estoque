@@ -81,5 +81,25 @@ namespace CaelumEstoque.Controllers
             ViewBag.Produto = produto;
             return View();
         }
+
+        public ActionResult DecrementaQtd(int id)
+        {
+            ProdutosDAO produtosDAO = new ProdutosDAO();
+            Produto produto = produtosDAO.BuscaPorId(id);
+            produto.Quantidade--;
+            produtosDAO.Atualiza(produto);
+            //return RedirectToAction("Index");
+            return Json(produto);
+        }
+
+        public ActionResult IncrementaQtd(int id)
+        {
+            ProdutosDAO produtosDAO = new ProdutosDAO();
+            Produto produto = produtosDAO.BuscaPorId(id);
+            produto.Quantidade++;
+            produtosDAO.Atualiza(produto);
+            //return RedirectToAction("Index");
+            return Json(produto);
+        }
     }
 }

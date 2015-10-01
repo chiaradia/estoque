@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Estoque - MVC5</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                <li>@Html.ActionLink("Categorias", "Index", "Categoria")</li>
+            </ul>
+            <h3 class="text-muted">Estoque</h3>
+        </div>
+        <div id="conteudo">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
