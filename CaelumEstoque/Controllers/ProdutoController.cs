@@ -22,6 +22,7 @@ namespace CaelumEstoque.Controllers
             return View();
         }
 
+        [Route("cadastrar-produto")]
         public ActionResult FormCadastraProduto()
         {
             CategoriasDAO categoriasDAO = new CategoriasDAO();

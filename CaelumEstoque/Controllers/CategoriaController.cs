@@ -11,6 +11,7 @@ namespace CaelumEstoque.Controllers
     public class CategoriaController : Controller
     {
         // GET: Categoria
+        [Route("categorias")]
         public ActionResult Index()
         {
             CategoriasDAO categoriaDAO = new CategoriasDAO();
@@ -20,6 +21,7 @@ namespace CaelumEstoque.Controllers
             return View();
         }
 
+        [Route("cadastrar-categoria")]
         public ActionResult FormCadastraCategoria()
         {
             ViewBag.Categoria = new CategoriaDoProduto();

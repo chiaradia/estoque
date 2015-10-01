@@ -1,49 +1,34 @@
 ﻿
-@{
-    Layout = null;
-}
+<form action="/Produto/Adiciona/" method="post" >
 
-<!DOCTYPE html>
+    @Html.ValidationMessage("produto.Invalido")
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>FormCadastraProduto</title>
-</head>
-<body>
-    <div> 
-        <form action="/Produto/Adiciona/" method="post">
-            
-            @Html.ValidationMessage("produto.Invalido")
+    <label for="nome">Nome: </label>
+    <input id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome" class="form-control"/> <br />
+    @Html.ValidationMessage("produto.Nome")
 
-            <label for="nome">Nome: </label>
-            <input id="nome" name="produto.Nome" value="@ViewBag.Produto.Nome"/> <br />
-            @Html.ValidationMessage("produto.Nome")
+    <label for="preco">Preço:</label>
+    <input id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" class="form-control" /><br />
+    @Html.ValidationMessage("produto.Preco")
 
-            <label for="preco">Preço:</label>
-            <input id="preco" name="produto.Preco" value="@ViewBag.Produto.Preco" /><br />
-            @Html.ValidationMessage("produto.Preco")
+    <label for="descricao">Descrição: </label>
+    <input id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" class="form-control" /><br />
 
-            <label for="descricao">Descrição: </label>
-            <input id="descricao" name="produto.Descricao" value="@ViewBag.Produto.Descricao" /><br />
+    <label for="quantidade">Quantidade: </label>
+    <input id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" class="form-control" /><br />
 
-            <label for="quantidade">Quantidade: </label>
-            <input id="quantidade" name="produto.Quantidade" value="@ViewBag.Produto.Quantidade" /><br />
+    <label for="categoria">Categoria: </label>
+    <select id="categoria" name="produto.CategoriaId" class="form-control">
+        @foreach (var categoria in ViewBag.Categorias)
+        {
 
-            <label for="categoria">Categoria: </label>
-            <select id="categoria" name="produto.CategoriaId">
-                @foreach (var categoria in ViewBag.Categorias)
-                {
-                    
-                    <option value="@categoria.Id" selected="@categoria.Id.Equals(@ViewBag.Produto.CategoriaId)">
-                        @categoria.Nome
-                    </option>
+            <option value="@categoria.Id" selected="@categoria.Id.Equals(@ViewBag.Produto.CategoriaId)">
+                @categoria.Nome
+            </option>
 
-                }
-            </select>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Cadastrar" class="btn btn-default"/>
+</form>
 
-            <input type="submit" value="Cadastrar" />
-        </form>
-    </div>
-</body>
-</html>
