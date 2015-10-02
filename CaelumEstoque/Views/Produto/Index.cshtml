@@ -35,7 +35,6 @@
                 <td>@produto.Id</td>
                 <td>@Html.ActionLink(produto.Nome, "Visualiza", new { id = produto.Id })</td>
                 <td id="quantidade@(produto.Id)">@produto.Quantidade</td>
-                
                 <td align="char"><a href="#" class="glyphicon glyphicon-minus" onclick="decrementa(@produto.Id);"></a></td>
                 <td align="char"><a href="#" class="glyphicon glyphicon-plus" onclick="incrementa(@produto.Id);"></a></td>
             </tr>
