@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using CaelumEstoque.DAO;
 using CaelumEstoque.Models;
+using CaelumEstoque.Filtros;
 
 namespace CaelumEstoque.Controllers
 {
+   [ControleFilter]
     public class ProdutoController : Controller
     {
         // GET: Produto
@@ -20,6 +22,8 @@ namespace CaelumEstoque.Controllers
             IList<Produto> produtos = produtosDAO.Lista();
             ViewBag.Produtos = produtos;
             return View();
+            
+
         }
 
         [Route("cadastrar-produto")]
@@ -49,8 +53,9 @@ namespace CaelumEstoque.Controllers
         //Utilização do componente Model Binder e o método somente aceitará requisições via POST devido a anotação
         //A variável produto recebida pelo método da classe controladora é instanciada e preenchida por um 
         //componente do ASP.NET MVC conhecido como Model Binder.
-        [HttpPost]
-        public ActionResult Adiciona(Produto produto)
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+       public ActionResult Adiciona(Produto produto)
         {
             int idDaInformatica = 1;
             if (produto.CategoriaId.Equals(idDaInformatica) && produto.Preco < 100)
@@ -74,6 +79,7 @@ namespace CaelumEstoque.Controllers
         }
 
         [Route("produtos/{id}", Name="DetalhesDoProduto")]
+       
         public ActionResult Visualiza(int id)
         {
             ProdutosDAO produtosDAO = new ProdutosDAO();
